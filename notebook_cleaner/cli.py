@@ -43,7 +43,7 @@ def main(argv=None):
             if not is_clean(nb, **opts):
                 dirty.append(p)
                 print("NOT CLEAN: %s" % p)
-        elif not args.stats and not args.secrets or not is_clean(nb, **opts) and not (args.stats or args.secrets):
+        elif not (args.stats or args.secrets):     # report-only modes never modify files
             cleaned = clean_notebook(nb, **opts)
             if cleaned != nb:
                 _save(cleaned, p)
